@@ -26,7 +26,7 @@ public class Main
         list.Show();
         
         System.out.println("\n\nAGREGAR 9999 EN EL ÍNDICE 7");
-        list.InsertAtIndex(7, 9999);
+        list.InsertAtIndex(3, 9999);
         list.Show();
     }
     

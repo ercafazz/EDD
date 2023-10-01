@@ -70,7 +70,61 @@ public class CircleList
     
     public void InsertAtIndex(int index, Object data)
     {
-        
+        if (isEmpty())
+        {
+            InsertBegin(data);
+        }
+        else
+        {
+            if (index < 0 || index > getSize())
+            {
+                System.out.println("\n---ÍNDICE INVALIDO---\n");
+            }
+            else if (index == getSize())
+            {
+                InsertAtEnd(data);
+            }
+            else if (index == 0)
+            {
+                InsertBegin(data);
+            }
+            else
+            {
+                CircleNode node = new CircleNode(data);
+                if (index <= getSize()/2)
+                {
+                    CircleNode prev = getHead();
+                    int cont = 0;
+                    while (cont < index-1)
+                    {
+                        prev = prev.getNext();
+                        cont++;
+                    }
+                    CircleNode next = prev.getNext();
+                    
+                    prev.setNext(node);
+                    node.setPrev(prev);
+                    next.setPrev(node);
+                    node.setNext(next);
+                }
+                else
+                {
+                    CircleNode next = getHead().getPrev();
+                    int cont = getSize()-1;
+                    while (cont != index)
+                    {
+                        next = next.getPrev();
+                        cont--;
+                    }
+                    CircleNode prev = next.getPrev();
+                    prev.setNext(node);
+                    node.setPrev(prev);
+                    next.setPrev(node);
+                    node.setNext(next);
+                }
+                size++;
+            }
+        }
     }
     
     public void Show()
