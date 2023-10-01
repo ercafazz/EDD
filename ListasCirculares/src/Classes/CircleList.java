@@ -101,11 +101,7 @@ public class CircleList
                         cont++;
                     }
                     CircleNode next = prev.getNext();
-                    
-                    prev.setNext(node);
-                    node.setPrev(prev);
-                    next.setPrev(node);
-                    node.setNext(next);
+                    SetInBetween(prev, node, next);
                 }
                 else
                 {
@@ -117,10 +113,7 @@ public class CircleList
                         cont--;
                     }
                     CircleNode prev = next.getPrev();
-                    prev.setNext(node);
-                    node.setPrev(prev);
-                    next.setPrev(node);
-                    node.setNext(next);
+                    SetInBetween(prev, node, next);
                 }
                 size++;
             }
@@ -135,5 +128,13 @@ public class CircleList
             System.out.print(" [ "+pointer.getData()+" ] ");
             pointer = pointer.getNext();
         }   while(pointer!=getHead());
+    }
+    
+    public void SetInBetween(CircleNode prev, CircleNode node, CircleNode next)
+    {
+        prev.setNext(node);
+        node.setPrev(prev);
+        next.setPrev(node);
+        node.setNext(next);
     }
 }
