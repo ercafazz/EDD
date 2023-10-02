@@ -120,6 +120,31 @@ public class CircleList
         }
     }
     
+    public void DeleteBegin()
+    {
+        if (isEmpty())
+        {
+            System.out.println("LISTA VACÍA");
+        }
+        else
+        {
+            if (getSize()==1)
+            {
+                getHead().setNext(null);
+                getHead().setPrev(null);
+            }
+            else
+            {
+                CircleNode next = getHead().getNext();
+                CircleNode prev = getHead().getPrev();
+                CircleNode middle = getHead();
+                DeleteInBetween(prev,middle,next);
+                setHead(next);
+            }
+            size++;
+        }
+    }
+    
     public void Show()
     {
         CircleNode pointer = getHead();
@@ -136,5 +161,13 @@ public class CircleList
         node.setPrev(prev);
         next.setPrev(node);
         node.setNext(next);
+    }
+    
+    public void DeleteInBetween(CircleNode prev, CircleNode middle, CircleNode next)
+    {
+        middle.setNext(null);
+        middle.setPrev(null);
+        prev.setNext(next);
+        next.setPrev(prev);
     }
 }

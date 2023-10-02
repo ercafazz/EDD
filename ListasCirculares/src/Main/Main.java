@@ -28,6 +28,12 @@ public class Main
         System.out.println("\n\nAGREGAR 9999 EN EL ÍNDICE 7");
         list.InsertAtIndex(7, 9999);
         list.Show();
+        
+        System.out.println("\n\nBORRAR EL PRIMER ELEMENTO");
+        list.DeleteBegin();
+        list.DeleteBegin();
+        list.DeleteBegin();
+        list.Show();
     }
     
 }
