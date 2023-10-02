@@ -31,9 +31,21 @@ public class Main
         
         System.out.println("\n\nBORRAR EL PRIMER ELEMENTO");
         list.DeleteBegin();
-        list.DeleteBegin();
-        list.DeleteBegin();
         list.Show();
+        
+        System.out.println("\n\nBORRAR EL ÚLTIMO ELEMENTO");
+        list.DeleteAtEnd();
+        list.Show();
+        
+        System.out.println("\n\nBORRAR EL INDICE 3");
+        list.DeleteAtIndex(3);
+        list.Show();
+        
+        System.out.println("\n\nBORRAR EL ÍNDICE 7");
+        list.DeleteAtIndex(7);
+        list.Show();
+        
+        System.out.println("\n");
     }
     
 }

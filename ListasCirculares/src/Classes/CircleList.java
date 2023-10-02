@@ -141,7 +141,83 @@ public class CircleList
                 DeleteInBetween(prev,middle,next);
                 setHead(next);
             }
-            size++;
+            size--;
+        }
+    }
+    
+    public void DeleteAtEnd()
+    {
+        if (isEmpty())
+        {
+            System.out.println("LISTA VACÍA");
+        }
+        else
+        {
+            if (getSize() ==1)
+            {
+                DeleteBegin();
+            }
+            else
+            {
+                CircleNode middle = getHead().getPrev();
+                CircleNode prev = middle.getPrev();
+                CircleNode next = middle.getNext();
+                DeleteInBetween(prev,middle,next);
+            }
+            size--;
+        }
+    }
+    
+    public void DeleteAtIndex(int index)
+    {
+        if (isEmpty())
+        {
+            System.out.println("LISTA VACÍA");
+        }
+        else
+        {
+            if (index < 0 || index > getSize())
+            {
+                System.out.println("INDICE INVALIDO");
+            }
+            else if (index ==0)
+            {
+                DeleteBegin();
+            }
+            else if (index == getSize())
+            {
+                DeleteAtEnd();
+            }
+            else
+            {
+                if (index <= getSize()/2)
+                {
+                    CircleNode middle = getHead();
+                    int cont = 0;
+                    while (cont != index)
+                    {
+                        middle = middle.getNext();
+                        cont++;
+                    }
+                    CircleNode prev = middle.getPrev();
+                    CircleNode next = middle.getNext();
+                    DeleteInBetween(prev, middle, next);
+                }
+                else
+                {
+                    CircleNode middle = getHead().getPrev();
+                    int cont = getSize()-1;
+                    while (cont!=index)
+                    {
+                        middle = middle.getPrev();
+                        cont--;
+                    }
+                    CircleNode next = middle.getNext();
+                    CircleNode prev = middle.getPrev();
+                    DeleteInBetween(prev,middle,next);
+                }
+                size--;
+            }
         }
     }
     
