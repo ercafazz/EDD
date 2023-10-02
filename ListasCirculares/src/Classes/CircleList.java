@@ -224,11 +224,19 @@ public class CircleList
     public void Show()
     {
         CircleNode pointer = getHead();
-        do
+        if (getSize()==0)
         {
+            System.out.println("NO HAY ELEMENTOS");
+        }
+        else
+        {
+            do
+            {
             System.out.print(" [ "+pointer.getData()+" ] ");
             pointer = pointer.getNext();
-        }   while(pointer!=getHead());
+            }   while(pointer!=getHead());
+        }
+        
     }
     
     public void SetInBetween(CircleNode prev, CircleNode node, CircleNode next)
