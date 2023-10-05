@@ -73,25 +73,83 @@ public class LinkedList
         length++;
     }
     
+    public void DeleteBegin()
+    {
+        if (isEmpty())
+        {
+            System.out.println("No hay elementos");
+        }
+        else
+        {
+            Node pointer = getHead();
+            setHead(pointer.getNext());
+            pointer.setNext(null);
+            length--;
+        }
+    }
+    
     public void Show()
     {
         Node pointer = getHead();
-        while (pointer.getNext()!=null)
+        while (pointer!=null)
         {
-            System.out.println(" [ "+pointer.getData()+" ] ");
+            System.out.print(" [ "+pointer.getData()+" ] ");
             pointer=pointer.getNext();
         }
     }
     
-    public LinkedList Reverse()
+    public LinkedList Reverse_And_Delete()
+            //EJERCICIO 1 Y 2 
     {
         LinkedList new_list = new LinkedList();
         Node pointer = getHead();
-        while (pointer.getNext()!=null)
+        this.Show();
+        System.out.println("");
+        while (pointer!=null)
         {
             new_list.InsertBegin(pointer.getData());
             pointer = pointer.getNext();
+            this.DeleteBegin();
+            this.Show();
+            System.out.println("");
         }
         return new_list;
+    }
+    
+    public LinkedList Merge(LinkedList list_B)
+            //EJERCICIO 3
+    {
+        LinkedList list_C = new LinkedList();
+        Node pointerA = this.getHead();
+        while (pointerA!=null)
+        {
+            list_C.InsertEnd(pointerA.getData());
+            pointerA = pointerA.getNext();
+        }
+        Node pointerB = list_B.getHead();
+        while (pointerB!=null)
+        {
+            list_C.InsertEnd(pointerB.getData());
+            pointerB = pointerB.getNext();
+        }
+        
+        Node left = list_C.getHead();
+        while (left!=null)
+        {
+            Node right = left.getNext();
+            while (right!=null)
+            {
+                if ((int) (left.getData()) > (int) (right.getData()))
+                {
+                    int leftData = (int) left.getData();
+                    int rightData = (int) right.getData();
+                    left.setData(rightData);
+                    right.setData(leftData);
+                }
+                right = right.getNext();
+            }
+            left = left.getNext();
+        }
+        return list_C;
     }
 }
