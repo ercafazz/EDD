@@ -88,6 +88,17 @@ public class LinkedList
         }
     }
     
+    public void DeleteEnd()
+    {
+        Node pointer = getHead();
+        while (pointer.getNext().getNext()!=null)
+        {
+            pointer = pointer.getNext();
+        }
+        pointer.setNext(null);
+        length--;
+    }
+    
     public void Show()
     {
         Node pointer = getHead();
@@ -96,6 +107,7 @@ public class LinkedList
             System.out.print(" [ "+pointer.getData()+" ] ");
             pointer=pointer.getNext();
         }
+        System.out.println("");
     }
     
     public LinkedList Reverse_And_Delete()
@@ -151,5 +163,50 @@ public class LinkedList
             left = left.getNext();
         }
         return list_C;
+    }
+    
+    public LinkedList SumWith (LinkedList b, LinkedList c)
+    {
+        LinkedList newList= new LinkedList();
+        
+        Node pointerThis = getHead();
+        Node pointerB = b.getHead();
+        Node pointerC = c.getHead();
+        
+        boolean booleanA = true;
+        boolean booleanB = true;
+        boolean booleanC = true;
+        
+        while (booleanA==true || booleanB==true || booleanC==true)
+        {
+            int cont = 0;
+            if (pointerThis!=null)
+            {
+                cont+=(int) pointerThis.getData();
+                pointerThis = pointerThis.getNext();
+            }
+            else    {    booleanA=false;    }   
+            
+            if (pointerB!=null)
+            {
+                cont+=(int) pointerB.getData();
+                pointerB = pointerB.getNext();
+            }
+            else    {    booleanB=false;    }     
+            
+            if (pointerC!=null)
+            {
+                cont+=(int) pointerC.getData();
+                pointerC = pointerC.getNext();
+            }
+            else    {    booleanC=false;    }     
+            
+            if (booleanA==false && booleanB==false && booleanC==false)
+            {
+                break;
+            }
+            newList.InsertEnd(cont);
+        }
+        return newList;
     }
 }
