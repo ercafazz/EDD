@@ -99,6 +99,43 @@ public class LinkedList
         length--;
     }
     
+    public void InsertAtIndex(int index, Object data)
+    {
+        Node node = new Node(data);
+        if (isEmpty())
+        {
+            InsertBegin(data);
+        }
+        else
+        {
+            if (index > this.getLength()-1 || index < 0)
+            {
+                System.out.println("INDICE INVÁLIDO");
+            }
+            else if (index==0)
+            {
+                InsertBegin(data);
+            }
+            else if (index == this.getLength())
+            {
+                InsertEnd(data);
+            }
+            else
+            {
+                int cont = 0;
+                Node pointer = getHead();
+                while (cont!=index-1)
+                {
+                    pointer = pointer.getNext();
+                    cont++;
+                }
+                node.setNext(pointer.getNext());
+                pointer.setNext(node);
+                length++;
+            }
+        }
+    }
+    
     public void Show()
     {
         Node pointer = getHead();
@@ -166,6 +203,7 @@ public class LinkedList
     }
     
     public LinkedList SumWith (LinkedList b, LinkedList c)
+            //EJERCICIO 4
     {
         LinkedList newList= new LinkedList();
         
@@ -209,4 +247,99 @@ public class LinkedList
         }
         return newList;
     }
+    
+    public LinkedList FindMultiplesList(int num)
+            //EJERCICIO 5
+    {
+        LinkedList list = new LinkedList();
+        Node pointer = getHead();
+        while (pointer!=null)
+        {
+            if ((int) pointer.getData()==0) 
+            {   
+                
+            }
+            else
+            {
+                for (int i = 0; i < (int) pointer.getData(); i++) 
+                {
+                    if (num*i == (int) pointer.getData())
+                    {
+                        list.InsertEnd(pointer.getData());
+                    }
+                }
+            }
+            pointer = pointer.getNext();
+        }
+        return list;
+    }
+    
+    public void ChangeNumber(int num)
+    {
+        Node pointer = getHead();
+        while (pointer!=null)
+        {
+            if ((int) pointer.getData()==num)
+            {
+                pointer.setData(-999);
+            }
+            pointer = pointer.getNext();
+        }
+    }
+    
+    public void Change(int n, int v)
+            //EJERCICIO 7
+    {
+        Node pointer = getHead();
+        while (pointer!=null)
+        {
+            if ((int)pointer.getData() == n)
+            {
+                pointer.setData(v);
+            }
+            pointer = pointer.getNext();
+        }
+    }
+    
+    public void InsertAtTwoPlusIndex(int index, Object data)
+    {
+        Node node = new Node(data);
+        if (isEmpty())
+        {
+            InsertBegin(data);
+        }
+        else
+        {
+            if (index >= this.getLength()-2|| index < -2)
+            {
+                System.out.println("INDICE INVÁLIDO");
+            }
+            else if (index == this.getLength()-2)
+            {
+                InsertEnd(data);
+            }
+            else if (index == -2)
+            {
+                InsertBegin(data);
+            }
+            else if (index ==-1)
+            {
+                InsertAtIndex(1, data);
+            }
+            else
+            {
+                Node pointer = getHead();
+                int cont = 0;
+                while (cont!=index+1)
+                {
+                    pointer = pointer.getNext();
+                    cont++;
+                }
+                node.setNext(pointer.getNext());
+                pointer.setNext(node);
+                length++;
+            }
+        }
+    }
+    
 }

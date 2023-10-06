@@ -15,32 +15,17 @@ public class Main {
      */
     public static void main(String[] args) 
     {
-        LinkedList list_A = new LinkedList();
         LinkedList list_B = new LinkedList();
-        LinkedList list_C = new LinkedList();
-        
-        for (int i = 0; i < 10; i+=2) 
-        {
-            list_A.InsertEnd(i);
-        }
-        for (int i = 0; i < 40; i+=3) 
+        for (int i = 0; i < 20; i+=3) 
         {
             list_B.InsertEnd(i);
         }
-        for (int i = 0; i < 40; i+=6) 
-        {
-            list_C.InsertEnd(i);
-        }
-        
-        System.out.println("Lista A");
-        list_A.Show();
-        System.out.println("\nLista B");
+        System.out.println("");
+        list_B.Change(3, 1000);
         list_B.Show();
-        System.out.println("\nLista C");
-        list_C.Show();
         
-        LinkedList finalList = list_A.SumWith(list_B, list_C);
-        System.out.println("\nSuma de la lista");
-        finalList.Show();
+        list_B.InsertAtTwoPlusIndex(6, 200);
+        list_B.Show();
+        System.out.println("");
     }
 }
