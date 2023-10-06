@@ -302,6 +302,7 @@ public class LinkedList
     }
     
     public void InsertAtTwoPlusIndex(int index, Object data)
+            //EJERCICIO 8
     {
         Node node = new Node(data);
         if (isEmpty())
@@ -310,7 +311,7 @@ public class LinkedList
         }
         else
         {
-            if (index >= this.getLength()-2|| index < -2)
+            if (index >= this.getLength()-1|| index < -2)
             {
                 System.out.println("INDICE INVÁLIDO");
             }
