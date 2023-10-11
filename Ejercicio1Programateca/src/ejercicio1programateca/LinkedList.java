@@ -69,8 +69,8 @@ public class LinkedList
                 pointer = pointer.getNext();
             }
             pointer.setNext(node);
+            length++;
         }
-        length++;
     }
     
     public void DeleteBegin()
@@ -311,7 +311,7 @@ public class LinkedList
         }
         else
         {
-            if (index >= this.getLength()-1|| index < -2)
+            if (index > getLength()-2|| index < -2)
             {
                 System.out.println("INDICE INVÁLIDO");
             }
@@ -340,6 +340,49 @@ public class LinkedList
                 pointer.setNext(node);
                 length++;
             }
+        }
+    }
+    
+    public String CheckIfPalindrome()
+    {
+        LinkedList l = new LinkedList();
+        Node pointer = getHead();
+        while (pointer !=null)
+        {
+            l.InsertBegin(pointer.getData());
+            pointer = pointer.getNext();
+        }
+        
+        if (this.Equals(l))
+        {
+            return "Es palindromo";
+        }
+        else
+        {
+            return "No es palíndromo";
+        }
+    }
+    
+    public boolean Equals(LinkedList l)
+    {
+        if (this.getLength()!=l.getLength())
+        {
+            return false;
+        }
+        else
+        {
+            Node pointer1 = getHead();
+            Node pointer2 = l.getHead();
+            while (pointer1!=null)
+            {
+                if (pointer1.getData()!=pointer2.getData())
+                {
+                    return false;
+                }
+                pointer1 = pointer1.getNext();
+                pointer2 = pointer2.getNext();
+            }
+            return true;
         }
     }
     

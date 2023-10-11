@@ -4,6 +4,8 @@
  */
 package ejercicio1programateca;
 
+import java.util.Scanner;
+
 /**
  *
  * @author ernesto
@@ -15,17 +17,27 @@ public class Main {
      */
     public static void main(String[] args) 
     {
-        LinkedList list_B = new LinkedList();
-        for (int i = 0; i < 20; i+=3) 
+        LinkedList l = new LinkedList();
+        for (int i = 1; i < 10; i++) 
         {
-            list_B.InsertEnd(i);
+            l.InsertBegin(i);
         }
+        LinkedList n = new LinkedList();
+        for (int i = 4; i < 100; i+=7) 
+        {
+            n.InsertBegin(i);
+        }
+        LinkedList m = new LinkedList();
+        for (int i = 20; i < 25; i+=2) 
+        {
+            m.InsertBegin(i);
+        }
+        l.Show();
         System.out.println("");
-        list_B.Change(3, 1000);
-        list_B.Show();
-        
-        list_B.InsertAtTwoPlusIndex(6, 200);
-        list_B.Show();
+        n.Show();
         System.out.println("");
+        m.Show();
+        LinkedList z = l.SumWith(m, n);
+        z.Show();
     }
 }

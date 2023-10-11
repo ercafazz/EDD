@@ -130,8 +130,7 @@ public class CircleList
         {
             if (getSize()==1)
             {
-                getHead().setNext(null);
-                getHead().setPrev(null);
+                setHead(null);
             }
             else
             {
@@ -176,7 +175,7 @@ public class CircleList
         }
         else
         {
-            if (index < 0 || index > getSize())
+            if (index < 0 || index > getSize()-1)
             {
                 System.out.println("INDICE INVALIDO");
             }
