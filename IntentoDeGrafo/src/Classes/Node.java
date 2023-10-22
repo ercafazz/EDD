@@ -3,6 +3,7 @@ package Classes;
 
 public class Node 
 {
+    private int maxSize;
     private Node next;
     private Object data;
     private Integer index;
@@ -23,7 +24,10 @@ public class Node
     }
 
     public Object getData() {
+        System.out.println("");
+        System.out.println("");
         return data;
+        
     }
 
     public void setData(Object data) {
