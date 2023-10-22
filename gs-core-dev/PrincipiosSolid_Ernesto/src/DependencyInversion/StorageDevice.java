@@ -1,0 +1,12 @@
+
+package DependencyInversion;
+
+public interface StorageDevice 
+        //SUPONIENDO QUE TENEMOS UNA INTERFAZ PARA DISPOSITIVOS DE ALMACENAMIENTO
+        //CREAREMOS CLASES QUE IMPLEMENTEN DICHA INTERFAZ
+        //TAMBIÉN CREAREMOS CLASES CAPACES DE CONTROLAR AQUELLAS CLASES QUE PERTENEZCAN
+        //A DICHA INTERFAZ
+{
+    public void readData();
+    public void writeData();
+}
